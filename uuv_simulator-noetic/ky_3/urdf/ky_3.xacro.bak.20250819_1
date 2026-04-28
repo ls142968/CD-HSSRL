@@ -1,0 +1,1041 @@
+<?xml version="1.0"?>
+
+<robot name="ky_3" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="debug" default="0"/>
+  <xacro:arg name="namespace" default="ky3_origin"/>
+  <xacro:arg name="inertial_reference_frame" default="world"/> 
+  <link name="base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <mass
+        value="44.5" />
+      <inertia
+        ixx="1.71"
+        ixy="0.0053"
+        ixz="-0.0007"
+        iyy="4.83"
+        iyz="-0.001"
+        izz="5.21" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <link name="propeller1_Link">
+    <inertial>
+      <origin
+        xyz="7.09242094221185E-08 -0.00199868380104069 0.0256021562412026"
+        rpy="0 0 0" />
+      <mass
+        value="0.414409363255111" />
+      <inertia
+        ixx="0.0003281944216786"
+        ixy="3.26068805475567E-10"
+        ixz="8.29625612277526E-10"
+        iyy="0.00032610075624694"
+        iyz="5.80579089096782E-07"
+        izz="0.000410643139202458" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="propeller1_joint" type="fixed">
+    <origin
+      xyz="0.181500000000014 0.298425971355227 0.159560518489246"
+      rpy="-0.785398163397452 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller1_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  
+  <link name="propeller2_Link">
+    <inertial>
+      <origin
+        xyz="-5.59307258007902E-08 0.00199868691646961 0.0256021626229174"
+        rpy="0 0 0" />
+      <mass
+        value="0.414409181908558" />
+      <inertia
+        ixx="0.000328195290466345"
+        ixy="3.61385579101102E-10"
+        ixz="-7.27506355535285E-10"
+        iyy="0.000326101406380341"
+        iyz="-5.80563203926216E-07"
+        izz="0.000410642909290001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="propeller2_joint"  type="fixed">
+    <origin
+      xyz="0.181499999999985 -0.298425971355227 0.159560518489247"
+      rpy="0.785398163397452 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller2_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+  <link  name="propeller3_Link">
+    <inertial>
+      <origin
+        xyz="7.09023045830648E-08 -0.00199868373451906 0.0256021561055486"
+        rpy="0 0 0" />
+      <mass
+        value="0.414409365807567" />
+      <inertia
+        ixx="0.000328195009727699"
+        ixy="3.25949519903211E-10"
+        ixz="8.29457397819805E-10"
+        iyy="0.000326101344749567"
+        iyz="5.80579591074907E-07"
+        izz="0.000410643140172733" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="propeller3_joint"   type="fixed">
+    <origin
+      xyz="-0.253499999999987 0.334941271600732 0.174540171291753"
+      rpy="0.78539816339745 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller3_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  
+  <link   name="propeller4_Link">
+    <inertial>
+      <origin
+        xyz="-7.28524880422299E-08 0.00199868355394961 0.0256021570457827"
+        rpy="0 0 0" />
+      <mass
+        value="0.414409341819862" />
+      <inertia
+        ixx="0.000328194124042591"
+        ixy="3.30539341629614E-10"
+        ixz="-8.44396023390456E-10"
+        iyy="0.000326100429833741"
+        iyz="-5.80581792791567E-07"
+        izz="0.000410643109466097" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller4_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller4_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint   name="propeller4_joint"   type="fixed">
+    <origin
+      xyz="-0.253500000000015 -0.334941271600732 0.174540171291754"
+      rpy="-0.785398163397449 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller4_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  
+  <link  name="propeller5_Link">
+    <inertial>
+      <origin
+        xyz="0.0256013697546785 -7.08879361321912E-08 0.00199874004821321"
+        rpy="0 0 0" />
+      <mass
+        value="0.414401384542534" />
+      <inertia
+        ixx="0.000410634033077079"
+        ixy="-8.41824564339678E-10"
+        ixz="-5.79460173421178E-07"
+        iyy="0.000328169837008807"
+        iyz="1.17547614490522E-10"
+        izz="0.000326092232215981" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller5_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller5_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="propeller5_joint"   type="fixed">
+    <origin
+      xyz="-0.0607093695504775 0.2942 0.191259999999984"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller5_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  
+  <link  name="propeller6_Link">
+    <inertial>
+      <origin
+        xyz="0.025601369722401 7.07663273813441E-08 -0.00199874003853573"
+        rpy="0 0 0" />
+      <mass
+        value="0.414401385208956" />
+      <inertia
+        ixx="0.000410634033771718"
+        ixy="8.41011541183698E-10"
+        ixz="5.79460204650533E-07"
+        iyy="0.000328169849793526"
+        iyz="1.18157627413255E-10"
+        izz="0.000326092245878525" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller6_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller6_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="propeller6_joint"   type="fixed">
+    <origin
+      xyz="-0.0607093695504776 -0.2942 0.191260000000012"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller6_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  
+  <link   name="propeller7_Link">
+    <inertial>
+      <origin
+        xyz="0.0256013698246613 -7.08212191946611E-08 0.00199874010089213"
+        rpy="0 0 0" />
+      <mass
+        value="0.414401382953397" />
+      <inertia
+        ixx="0.000410634032627552"
+        ixy="-8.41290807628331E-10"
+        ixz="-5.79459737933365E-07"
+        iyy="0.000328169818776531"
+        iyz="1.18040651879504E-10"
+        izz="0.000326092214201353" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller7_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller7_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="propeller7_joint"   type="fixed">
+    <origin
+      xyz="-0.0607093695504765 0.2942 0.0912599999999866"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller7_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  
+  <link  name="propeller8_Link">
+    <inertial>
+      <origin
+        xyz="0.0256013697803822 7.08926537612564E-08 -0.00199874004666173"
+        rpy="0 0 0" />
+      <mass
+        value="0.414401383895445" />
+      <inertia
+        ixx="0.00041063403301386"
+        ixy="8.41959162780188E-10"
+        ixz="5.79460201016688E-07"
+        iyy="0.000328169749120125"
+        iyz="1.1769377903609E-10"
+        izz="0.000326092144223429" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller8_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller8_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint   name="propeller8_joint"   type="fixed">
+    <origin
+      xyz="-0.0607093695504763 -0.2942 0.0912600000000148"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="propeller8_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  
+  <link  name="depth_Link">
+    <inertial>
+      <origin
+        xyz="-0.0172663810569851 0 -7.72299573207768E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0125849767819091" />
+      <inertia
+        ixx="5.43278134760562E-07"
+        ixy="1.73855064409688E-22"
+        ixz="-2.56705375893747E-24"
+        iyy="2.44600527249463E-06"
+        iyz="3.17563846005771E-23"
+        izz="2.44600527249463E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/depth_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/depth_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="depth_joint"   type="fixed">
+    <origin
+      xyz="0.213 0 0.19"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="depth_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+  <link  name="GPS_Link">
+    <inertial>
+      <origin
+        xyz="-0.000168183936074651 1.16553658051338E-05 0.0549692021321196"
+        rpy="0 0 0" />
+      <mass
+        value="0.385473836528922" />
+      <inertia
+        ixx="0.00069996351025094"
+        ixy="-6.00188043940581E-08"
+        ixz="-1.52698790227809E-08"
+        iyy="0.000701636698867305"
+        iyz="4.22832495872188E-07"
+        izz="0.000771351524393107" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/GPS_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/GPS_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint   name="GPS_joint"   type="fixed">
+    <origin
+      xyz="-0.297 0 0.333"
+      rpy="0 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="GPS_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+  <link  name="gyro_Link">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 0.01 -1.35525271560688E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.05" />
+      <inertia
+        ixx="1.20833333333333E-05"
+        ixy="1.76465197344646E-22"
+        ixz="-8.97290235458056E-22"
+        iyy="2.08333333333333E-05"
+        iyz="-1.98087550916956E-37"
+        izz="1.20833333333333E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/gyro_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/gyro_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="gyro_joint"   type="fixed">
+    <origin
+      xyz="0.15 0 0.12"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="gyro_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+  <link name="motor1_Link">
+    <inertial>
+      <origin
+        xyz="-3.53902697029784E-07 -2.30279342569584E-06 -0.167666761645704"
+        rpy="0 0 0" />
+      <mass
+        value="0.540661288074095" />
+      <inertia
+        ixx="0.000713351633314392"
+        ixy="-1.77881489184007E-09"
+        ixz="9.9170653872615E-10"
+        iyy="0.00071335438387934"
+        iyz="6.01524109960287E-09"
+        izz="0.000927657663711591" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="motor1_joint"  type="fixed">
+    <origin
+      xyz="0.278 0.00699999999999998 0.166"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="motor1_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  
+  <link
+    name="motor1_add1_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0185"
+        rpy="0 0 0" />
+      <mass  value="0.5" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor1_add1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+	  <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+			<!--kp>1000000.0</kp>
+            <kd>1.0</kd -->
+          </ode>
+        </friction>
+      </surface>
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor1_add1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint   name="motor1_add1_joint"   type="continuous">
+    <origin
+      xyz="0.22 0.1935 0.038"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="motor1_add1_Link" />
+    <axis
+      xyz="0 0 -1" />
+	<dynamics damping="1.0" friction="0.8"/>
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+   
+  <link
+    name="motor1_add4_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0185"
+        rpy="0 0 0" />
+      <mass    value="0.5" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor1_add4_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+	  <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+			<!--kp>1000000.0</kp>
+            <kd>1.0</kd -->
+          </ode>
+        </friction>
+      </surface>
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor1_add4_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint   name="motor1_add4_joint"   type="continuous">
+    <origin
+      xyz="-0.32 0.1935 0.038"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="motor1_add4_Link" />
+    <axis
+      xyz="0 0 -1" />
+	<dynamics damping="1.0" friction="0.8"/>
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+  
+  
+  <link   name="motor2_Link">
+    <inertial>
+      <origin
+        xyz="-3.53902697591835E-07 -2.30279342597339E-06 -0.316666761645704"
+        rpy="0 0 0" />
+      <mass
+        value="0.540661288074095" />
+      <inertia
+        ixx="0.000191030453854987"
+        ixy="3.01165523015202E-07"
+        ixz="3.41458610731192E-07"
+        iyy="0.000191304906115872"
+        iyz="2.16312567354762E-07"
+        izz="0.00030256490931955" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+	  <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+          </ode>
+        </friction>
+      </surface>
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="motor2_joint"   type="fixed">
+    <origin
+      xyz="0.278 -0.142 0.166"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="motor2_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  
+  <link
+    name="motor2_add1_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0185"
+        rpy="0 0 0" />
+      <mass  value="0.5" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor2_add1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+	  <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+			<!--kp>1000000.0</kp>
+            <kd>1.0</kd -->
+          </ode>
+        </friction>
+      </surface>
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor2_add1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="motor2_add1_joint"   type="continuous">
+    <origin
+      xyz="0.22 -0.1565 0.038"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="motor2_add1_Link" />
+    <axis
+      xyz="0 0 -1" />
+	<dynamics damping="1.0" friction="0.8"/>
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+  
+  <link    name="motor2_add4_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0185"
+        rpy="0 0 0" />
+      <mass    value="0.5" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor2_add4_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+	  <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+			<!--kp>1000000.0</kp>
+            <kd>1.0</kd -->
+          </ode>
+        </friction>
+      </surface>
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor2_add4_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint    name="motor2_add4_joint"    type="continuous">
+    <origin
+      xyz="-0.32 -0.1565 0.038"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="motor2_add4_Link" />
+    <axis
+      xyz="0 0 -1" />
+	<dynamics damping="1.0" friction="0.8"/>
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+  
+  <gazebo>
+    <plugin name="skid_steer_drive_controller" 
+            filename="libgazebo_ros_skid_steer_drive.so">
+        <rosDebugLevel>Debug</rosDebugLevel>
+        <publishWheelTF>true</publishWheelTF>
+        <robotNamespace>/</robotNamespace>
+        <publishTf>1</publishTf> 
+        <publishWheelJointState>true</publishWheelJointState>
+        <updateRate>100.0</updateRate>
+        
+        <leftFrontJoint>motor1_add1_joint</leftFrontJoint>
+        <leftRearJoint>motor1_add4_joint</leftRearJoint>
+		
+		<rightFrontJoint>motor2_add1_joint</rightFrontJoint>
+        <rightRearJoint>motor2_add4_joint</rightRearJoint>
+
+        <wheelSeparation>0.35</wheelSeparation>        
+        <wheelDiameter>0.08</wheelDiameter> 
+		<wheelTorque>5000.0</wheelTorque> 
+		
+        <broadcastTF>1</broadcastTF>
+        
+        <torque>5000</torque>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryFrame>odom</odometryFrame>
+        <odometryTopic>odom</odometryTopic> 
+        <robotBaseFrame>base_link</robotBaseFrame>
+    </plugin>
+	
+	<plugin name="uuv_plugin" filename="libuuv_underwater_object_ros_plugin.so">
+      <!-- Hydro parameters for the vehicle -->
+      <fluid_density>1028.0</fluid_density>
+      <flow_velocity_topic>hydrodynamics/current_velocity</flow_velocity_topic>
+      <debug>$(arg debug)</debug>
+      
+      <link name="base_link">
+        <!--neutrally_buoyant>1</neutrally_buoyant -->
+        <!--Volume, see p.31 in Berg2012-->
+        <volume>0.05</volume> 
+        <center_of_buoyancy>0.0 0.0 0.4</center_of_buoyancy>
+		<height>0.0</height>
+        <hydrodynamic_model>
+          <type>fossen</type>       
+          <linear_damping>
+            -4.03 -6.22 -5.18 -0.07 -0.07 -0.07
+          </linear_damping>
+          <quadratic_damping>
+            -18.18 -21.66 -36.99 -1.55 -1.55 -1.55
+          </quadratic_damping>
+        </hydrodynamic_model>
+      </link>
+    </plugin>
+  </gazebo> 
+  
+</robot>

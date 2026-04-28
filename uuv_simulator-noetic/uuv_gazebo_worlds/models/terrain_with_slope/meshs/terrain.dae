@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>ChatGPT</author>
+    </contributor>
+    <created>2025-08-12T00:00:00Z</created>
+    <modified>2025-08-12T00:00:00Z</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_geometries>
+    <geometry id="slope_geometry" name="SlopeGeometry">
+      <mesh>
+        <source id="position_source">
+          <float_array id="position_array" count="18">
+            0 0 0
+            10 0 0
+            10 0 5
+            0 0 5
+            0 10 0
+            10 10 0
+            10 10 5
+            0 10 5
+          </float_array>
+          <technique_common>
+            <accessor source="#position_array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="vertices">
+          <input semantic="POSITION" source="#position_source"/>
+        </vertices>
+        <polygons count="6" material="Material1">
+          <input semantic="VERTEX" source="#vertices" offset="0"/>
+          <p>0 1 2 3</p>
+          <p>4 5 6 7</p>
+          <p>0 4 7 3</p>
+          <p>1 5 6 2</p>
+          <p>0 1 5 4</p>
+          <p>3 2 6 7</p>
+        </polygons>
+      </mesh>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="Scene" name="Scene">
+      <node id="SlopeNode" name="SlopeNode" type="NODE">
+        <instance_geometry url="#slope_geometry"/>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#Scene"/>
+  </scene>
+</COLLADA>

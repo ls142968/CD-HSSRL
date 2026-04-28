@@ -1,0 +1,5 @@
+ky3_origin:
+    gazebo_ros_control:
+        pid_gains:
+            ky3_origin/motor_left1_joint: {p: 100.0, i: 0.01, d: 10.0}
+            ky3_origin/motor_right1_joint: {p: 100.0, i: 0.01, d: 10.0}

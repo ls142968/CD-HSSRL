@@ -1,0 +1,65 @@
+<launch>
+  <arg name="gui" default="true"/>
+  <arg name="paused" default="false"/>
+  <arg name="set_timeout" default="false"/>
+  <arg name="timeout" default="0.0"/>
+
+  <!-- 启动Gazebo并加载自定义的demo_cross_river.world -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+    <!-- 传递world_name参数 -->
+    <arg name="world_name" value="$(find uuv_gazebo_worlds)/worlds/demo_cross_river.world"/>
+    <arg name="paused" value="false"/>
+    <arg name="use_sim_time" value="true"/>
+    <arg name="gui" value="true"/>
+    <arg name="headless" value="false"/>
+    <arg name="debug" value="false"/>
+    <arg name="verbose" value="true"/>
+    <arg name="output" value="screen"/>
+  </include>
+
+  <param name="robot_description" command="cat $(find ky_2)/urdf/ky3.urdf" />
+  <!-- 加载并显示模型 -->
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-file $(find ky_2)/urdf/ky3.urdf -urdf -model ky3" output="screen" />
+
+  <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 base_link base_footprint 40" />
+  
+  <node name="fake_joint_calibration" pkg="rostopic" type="rostopic" args="pub /calibrated std_msgs/Bool true" />
+
+  <include file="$(find uuv_assistants)/launch/publish_world_ned_frame.launch"/>
+
+    <node name="publish_world_models"
+        pkg="uuv_assistants"
+        type="publish_world_models.py"
+        output="screen">
+        <rosparam subst_value="true">
+            meshes:
+                seafloor:
+                    plane: [2000, 2000, 0.1]
+                    pose:
+                        position: [0, 0, -100]
+                north:
+                    plane: [0.1, 2000, 100]
+                    pose:
+                        position: [1000, 0, -50]
+                south:
+                    plane: [0.1, 2000, 100]
+                    pose:
+                        position: [-1000, 0, -50]
+                west:
+                    plane: [2000, 0.1, 100]
+                    pose:
+                        position: [0, -1000, -50]
+                east:
+                    plane: [2000, 0.1, 100]
+                    pose:
+                        position: [0, 1000, -50]
+        </rosparam>
+    </node>
+
+    <group if="$(arg set_timeout)">
+        <include file="$(find uuv_assistants)/launch/set_simulation_timer.launch">
+            <arg name="timeout" value="$(arg timeout)"/>
+        </include>
+    </group>
+</launch>
+

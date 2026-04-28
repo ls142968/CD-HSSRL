@@ -1,0 +1,197 @@
+<?xml version="1.0"?>
+<!-- 
+     All rights reserved.
+
+     Licensed under the Apache License, Version 2.0 (the "License");
+     you may not use this file except in compliance with the License.
+     You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+     Unless required by applicable law or agreed to in writing, software
+     distributed under the License is distributed on an "AS IS" BASIS,
+     WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+     See the License for the specific language governing permissions and
+     limitations under the License.
+-->
+
+<robot name="ky3" xmlns:xacro="http://www.ros.org/wiki/xacro" >
+  <xacro:arg name="debug" default="0"/>
+  <xacro:arg name="namespace" default="ky3_origin"/>
+  <xacro:arg name="inertial_reference_frame" default="world"/> 
+  
+  <!-- base_link according to ROS conventions: x forward, z up -->
+  <link name="$(arg namespace)/base_link">
+    <inertial>
+      <mass value="19.4"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="0.099" ixy="0" ixz="0.0056" iyy="0.129" iyz="0" izz="0.16"/>
+    </inertial>
+    <visual>
+      <geometry>
+        <box size="1 0.6 0.6"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="1 0.6 0.6"/>
+      </geometry>
+    </collision>
+  </link>
+  
+  <!-- Left wheel -->
+  <link name="$(arg namespace)/left_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.15" length="0.05"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.15" length="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </inertial>
+  </link>
+
+  <!-- Right wheel -->
+  <link name="$(arg namespace)/right_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.15" length="0.05"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.15" length="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </inertial>
+  </link>
+
+  <!-- Thruster -->
+  <link name="$(arg namespace)/thruster_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.1"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.2"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </inertial>
+  </link>
+
+  <!-- Left wheel joint -->
+  <joint name="$(arg namespace)/left_wheel_joint" type="continuous">
+    <parent link="$(arg namespace)/base_link"/>
+    <child link="$(arg namespace)/left_wheel"/>
+    <origin xyz="0 0.3 -0.15" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- Right wheel joint -->
+  <joint name="$(arg namespace)/right_wheel_joint" type="continuous">
+    <parent link="$(arg namespace)/base_link"/>
+    <child link="$(arg namespace)/right_wheel"/>
+    <origin xyz="0 -0.3 -0.15" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- Thruster joint -->
+  <joint name="$(arg namespace)/thruster_joint" type="fixed">
+    <parent link="$(arg namespace)/base_link"/>
+    <child link="$(arg namespace)/thruster_link"/>
+    <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+  </joint>
+  
+  <gazebo>
+    <plugin name="uuv_plugin" filename="libuuv_underwater_object_ros_plugin.so">
+      <!-- Hydro parameters for the vehicle -->
+      <fluid_density>1028.0</fluid_density>
+      <flow_velocity_topic>hydrodynamics/current_velocity</flow_velocity_topic>
+      <debug>$(arg debug)</debug>
+      
+      <link name="$(arg namespace)/base_link">
+        <!--neutrally_buoyant>1</neutrally_buoyant -->
+        <!--Volume, see p.31 in Berg2012-->
+        <volume>0.025</volume> 
+        <center_of_buoyancy>0.0 0.0 0.25</center_of_buoyancy>
+        <hydrodynamic_model>
+          <type>fossen</type>       
+          <linear_damping>
+            -4.03 -6.22 -5.18 -0.07 -0.07 -0.07
+          </linear_damping>
+          <quadratic_damping>
+            -18.18 -21.66 -36.99 -1.55 -1.55 -1.55
+          </quadratic_damping>
+        </hydrodynamic_model>
+      </link>
+    </plugin>
+  </gazebo>
+  
+
+  
+  <!-- Define thrusters for propulsion -->
+  <!--xacro:property name="prop_mesh_file" value="file://$(find bluerov2h_description)/meshes/Propeller.dae"/-->
+  <!-- Common values, colors, converstion, standard shapes/inertia etc.
+      Dependency for the thruster_snippets.xacro-->
+  <xacro:include filename="$(find uuv_descriptions)/urdf/common.urdf.xacro"/>
+  <!--Various thruster models-->
+  <xacro:include filename="$(find uuv_gazebo_ros_plugins)/urdf/thruster_snippets.xacro"/>
+  
+  <!-- Thruster joint and link snippet
+       Wrapper for the the thruster_module_first_order_basic_fcn_macro
+       defined in uuv_gazebo_ros_plugins/urdf/thruster_snippet.
+       Uses the "thruster_cf_basic_macro"
+        1) Basic curve
+	Input: x
+	Output: thrust
+	Function: thrust = rotorConstant * x * abs(x)
+  -->
+  <!--
+  <xacro:macro name="thruster_macro" params="thruster_id *origin">
+    <xacro:generic_thruster_macro
+      namespace="$(arg namespace)"
+      thruster_id="${thruster_id}"
+      mesh_filename="${prop_mesh_file}">
+      <xacro:insert_block name="origin"/>
+      <xacro:rotor_dyn_first_order_macro time_constant="0.00001"/>
+      <xacro:thruster_cf_basic_macro rotor_constant="0.0012"/>
+    </xacro:generic_thruster_macro>
+  </xacro:macro>
+  -->
+  
+  <gazebo>
+    <plugin name="uuv_joint_state_publisher" filename="libuuv_joint_state_publisher.so">
+      <robotNamespace>$(arg namespace)</robotNamespace>
+      <updateRate>50</updateRate>
+    </plugin>
+  </gazebo>
+</robot>

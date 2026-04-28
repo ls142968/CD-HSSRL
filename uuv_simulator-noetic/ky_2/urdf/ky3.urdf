@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<robot name="ky3">
+
+  <!-- Base link -->
+  <link name="base_link">
+    <visual>
+      <geometry>
+        <box size="1 0.6 0.6"/>
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <box size="1 0.6 0.6"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="50"/>
+      <inertia ixx="5.2" ixy="0.014" ixz="0.33" iyy="7.94" iyz="0.26" izz="6.91"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </inertial>
+
+    <neutrally_buoyant>0</neutrally_buoyant>
+    <volume>0.36</volume>
+    <box>
+      <width>0.6</width>
+      <length>1.0</length>
+      <height>0.6</height>
+    </box>
+    <center_of_buoyancy>
+      0.0 0.0 0.3
+    </center_of_buoyancy>
+    <hydrodynamic_model>
+    <type>fossen</type>
+    <!-- Added mass: see p.28 in Berg2012 -->
+    <added_mass>
+      20   0    0    0   0   0
+      0  160    0    0   0   0
+      0    0  200    0   0   0
+      0    0    0   10   0   0
+      0    0    0    0  12   0
+      0    0    0    0   0  15
+    </added_mass>
+    <!-- Linear damping: see p.31 in Berg2012 -->
+    <linear_damping>
+      -40 -100 -150 -8 -10 -12
+    </linear_damping>
+    <!-- Non-linear damping: see p.30 in Berg2012 -->
+    <quadratic_damping>
+      -50 -200 -250 -15 -20 -25
+    </quadratic_damping>
+    </hydrodynamic_model>
+  </link>
+
+  <!-- Left wheel -->
+  <link name="left_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.15" length="0.05"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.15" length="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </inertial>
+  </link>
+
+  <!-- Right wheel -->
+  <link name="right_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.15" length="0.05"/>
+      </geometry>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.15" length="0.05"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.01" ixy="0" ixz="0" iyy="0.01" iyz="0" izz="0.01"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </inertial>
+  </link>
+
+  <!-- Thruster -->
+  <link name="thruster_link">
+    <visual>
+      <geometry>
+        <cylinder radius="0.05" length="0.1"/>
+      </geometry>
+      <material name="red">
+        <color rgba="1 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.05" length="0.1"/>
+      </geometry>
+    </collision>
+    <inertial>
+      <mass value="0.5"/>
+      <inertia ixx="0.001" ixy="0" ixz="0" iyy="0.001" iyz="0" izz="0.001"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+    </inertial>
+  </link>
+
+  <!-- Left wheel joint -->
+  <joint name="left_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_wheel"/>
+    <origin xyz="0 0.3 -0.15" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- Right wheel joint -->
+  <joint name="right_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_wheel"/>
+    <origin xyz="0 -0.3 -0.15" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- Thruster joint -->
+  <joint name="thruster_joint" type="fixed">
+    <parent link="base_link"/>
+    <child link="thruster_link"/>
+    <origin xyz="-0.5 0 0" rpy="0 0 0"/>
+  </joint>
+ 
+  <gazebo>
+      <plugin name="uuv_plugin" filename="libuuv_underwater_object_ros_plugin.so">
+        <fluid_density>1028.0</fluid_density>
+        <flow_velocity_topic>hydrodynamics/current_velocity</flow_velocity_topic>
+      </plugin>
+  </gazebo>
+</robot>
+

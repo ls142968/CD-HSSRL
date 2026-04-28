@@ -1,0 +1,84 @@
+<launch>
+  <!-- 启动Gazebo并加载自定义的demo_cross_river.world -->
+<include file="$(find uuv_gazebo_worlds)/launch/ocean_waves.launch">      
+    </include>
+ <arg name="x"     default="0"/>
+    <arg name="y"     default="0"/>
+    <arg name="z"     default="0"/>
+    <node name="spawn_world" pkg="gazebo_ros" type="spawn_model"
+        args="-sdf -file /home/ls/catkin_ws/src/uuv_simulator-noetic/uuv_gazebo_worlds/models/xd_cross_river/model.sdf -model demo_cross_river -x $(arg x) -y $(arg y) -z $(arg z)"/>
+
+  <node name="controller_manager" pkg="controller_manager" type="controller_manager" />
+  <param name="robot_description" command="cat $(find ky_2)/urdf/ky_2.urdf" />
+
+  <!-- 加载控制器配置文件 -->
+  <rosparam file="$(find ky_2)/config/controllers.yaml" />
+
+  <!-- 启动控制器 -->
+  <node name="controller_spawner" pkg="controller_manager" type="spawner" args="joint_state_controller zhu1_velocity_controller zhu2_velocity_controller c12_velocity_controller" />
+
+  <!-- 加载并显示模型 -->
+  <node name="spawn_model" pkg="gazebo_ros" type="spawn_model" args="-file $(find ky_2)/urdf/ky_2.urdf -urdf -model ky_2" output="screen" />
+
+  <node name="tf_footprint_base" pkg="tf" type="static_transform_publisher" args="0 0 0 0 0 0 base_link base_footprint 40" />
+  
+  <node name="fake_joint_calibration" pkg="rostopic" type="rostopic" args="pub /calibrated std_msgs/Bool true" />
+  
+  <!-- 配置轮子的控制器 -->
+  <rosparam>
+    zhu1_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: zhu1_joint
+      command: /zhu1_velocity_controller/command
+    zhu2_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: zhu2_joint
+      command: /zhu2_velocity_controller/command
+    c12_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: c12_joint
+      command: /c12_velocity_controller/command
+    c16_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: c16_joint
+      command: /c16_velocity_controller/command
+    c22_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: c22_joint
+      command: /c22_velocity_controller/command
+    c26_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: c26_joint
+      command: /c26_velocity_controller/command
+  </rosparam>
+
+  <!-- 配置螺旋桨的速度控制器 -->
+  <rosparam>
+    jiang1_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: jiang1_joint
+      command: /jiang1_velocity_controller/command
+    jiang2_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: jiang2_joint
+      command: /jiang2_velocity_controller/command
+    jiang3_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: jiang3_joint
+      command: /jiang3_velocity_controller/command
+    jiang4_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: jiang4_joint
+      command: /jiang4_velocity_controller/command
+    jiang5_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: jiang5_joint
+      command: /jiang5_velocity_controller/command
+    jiang6_velocity_controller:
+      type: velocity_controllers/JointVelocityController
+      joint: jiang6_joint
+      command: /jiang6_velocity_controller/command
+  </rosparam>
+</launch>
+
+

@@ -1,0 +1,1477 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- <xacro:include filename="$(find ky_2)/urdf/ky_2_wheel.xacro" /> -->
+
+<robot name="ky_2" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <link
+    name="base_link">
+    <inertial>
+      <origin
+        xyz="-0.254494698524647 5.27983596758421E-06 0.146404745978921"
+        rpy="0 0 0" />
+      <mass
+        value="61.6699519454852" />
+      <inertia
+        ixx="0.394660085571153"
+        ixy="0.000847094105303633"
+        ixz="-0.0663473817374121"
+        iyy="0.693442042108911"
+        iyz="0.000356167624910866"
+        izz="0.732017931214096" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.529411764705882 0.549019607843137 0.549019607843137 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <link
+    name="zhu1_Link">
+    <inertial>
+      <origin
+        xyz="2.45429540702848E-11 -3.49026363366534E-12 -0.0198458698325617"
+        rpy="0 0 0" />
+      <mass
+        value="0.214687701188754" />
+      <inertia
+        ixx="0.00022996"
+        ixy="0"
+        ixz="0"
+        iyy="0.00022996"
+        iyz="0"
+        izz="0.00022565"  />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/zhu1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/zhu1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="zhu1_joint"
+    type="continuous">
+    <origin
+      xyz="0 0.151000000000067 0.181"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="zhu1_Link" />
+    <axis
+      xyz="0 0 1" />
+    <limit effort="500" velocity="50" lower="0" upper="3.14"/>
+   <dynamics damping="0.1" friction="0.1"/>
+   <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+  <link
+    name="zhu2_Link">
+    <inertial>
+      <origin
+        xyz="2.45456566440774E-11 -3.4902081225141E-12 -0.0198458698325617"
+        rpy="0 0 0" />
+      <mass
+        value="0.214687701188754" />
+      <inertia
+        ixx="0.00022996"
+        ixy="0"
+        ixz="0"
+        iyy="0.00022996"
+        iyz="0"
+        izz="0.00022565" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/zhu2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/zhu2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="zhu2_joint"
+    type="continuous">
+    <origin
+      xyz="0 -0.151 0.181000000000014"
+      rpy="1.5707963267949 -1.22460635382238E-16 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="zhu2_Link" />
+    <axis
+      xyz="0 0 -1" />
+    <limit effort="100" velocity="10"/>
+    <dynamics damping="0.1" friction="0.1"/>  
+  </joint>
+  <link
+    name="jiang1_Link">
+    <inertial>
+      <origin
+        xyz="-4.79005362041818E-07 -0.0169646429757935 2.16870029051686E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.012613065758277" />
+      <inertia
+        ixx="0.00000876"
+        ixy="0"
+        ixz="0"
+        iyy="0.00000597"
+        iyz="0"
+        izz="0.00000876" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/jiang1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/jiang1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jiang1_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0949989857278299 0.259204999367468 0.285634237186543"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="jiang1_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit effort="10" velocity="100" />
+  </joint>
+  <link
+    name="jiang2_Link">
+    <inertial>
+      <origin
+        xyz="-1.15828013291797E-07 -0.0169643046940327 1.90212361694808E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.012612816871074" />
+      <inertia
+       ixx="0.00000876"
+        ixy="0"
+        ixz="0"
+        iyy="0.00000597"
+        iyz="0"
+        izz="0.00000876"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/jiang2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/jiang2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jiang2_joint"
+    type="continuous">
+    <origin
+      xyz="-0.45999898572783 0.259204999367468 0.285634237186543"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="jiang2_Link" />
+    <axis
+      xyz="0 1 0" />
+    <limit effort="100" velocity="100" />
+    <dynamics damping="0.1" friction="0.1"/>
+  </joint>
+  <link
+    name="jiang3_Link">
+    <inertial>
+      <origin
+        xyz="-4.82993659234321E-07 -0.0169646416169525 2.16692150506459E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0126130672207438" />
+      <inertia
+       ixx="0.00000876"
+        ixy="0"
+        ixz="0"
+        iyy="0.00000597"
+        iyz="0"
+        izz="0.00000876" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/jiang3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/jiang3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jiang3_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0950010142721672 -0.259204999367468 0.285634237186543"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="jiang3_Link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="jiang4_Link">
+    <inertial>
+      <origin
+        xyz="-3.8247034361838E-07 -0.0169645662807648 2.17170302285741E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0126130463117953" />
+      <inertia
+        ixx="0.00000876"
+        ixy="0.00007810"
+        ixz="-0.00000001"
+        iyy="0.00168635"
+        iyz="0"
+        izz="0.00168914"/>
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/jiang4_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/jiang4_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jiang4_joint"
+    type="continuous">
+    <origin
+      xyz="-0.460001014272167 -0.259204999367468 0.285634237186544"
+      rpy="1.5707963267949 0 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="jiang4_Link" />
+    <axis
+      xyz="0 1 0" />
+  </joint>
+  <link
+    name="jiang5_Link">
+    <inertial>
+      <origin
+        xyz="-4.78652815522063E-07 -0.016964643595762 2.16820966218029E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0126130662531881" />
+      <inertia
+        ixx="0.00000876"
+        ixy="0"
+        ixz="0"
+        iyy="0.00000597"
+        iyz="0"
+        izz="0.00000876" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/jiang5_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/jiang5_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jiang5_joint"
+    type="continuous">
+    <origin
+      xyz="-0.614201541745487 0.0624049993674013 0.145000000000018"
+      rpy="1.5707963267949 -1.5707963267949 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="jiang5_Link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="jiang6_Link">
+    <inertial>
+      <origin
+        xyz="3.7101394245731E-07 -0.0169645768397109 -2.16085715916414E-06"
+        rpy="0 0 0" />
+      <mass
+        value="0.0126130554470376" />
+      <inertia
+        ixx="0.00000876"
+        ixy="0"
+        ixz="0"
+        iyy="0.00000597"
+        iyz="0"
+        izz="0.00000876" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/jiang6_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/jiang6_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="jiang6_joint"
+    type="continuous">
+    <origin
+      xyz="-0.614201541745487 -0.0624049993674013 0.145000000000017"
+      rpy="1.5707963267949 -1.5707963267949 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="jiang6_Link" />
+    <axis
+      xyz="0 -1 0" />
+  </joint>
+  <link
+    name="c11_Link">
+    <inertial>
+      <origin
+        xyz="-2.77555756156289E-17 -5.55111512312578E-17 0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832912" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c11_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c11_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="c11_joint"
+    type="continuous">
+    <origin
+      xyz="-0.256 0.189500000000067 0.189"
+      rpy="1.5707963267949 1.43325629427691 -4.4237103534764E-16" />
+    <parent
+      link="base_link" />
+    <child
+      link="c11_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="c12_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832912" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c12_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c12_Link.STL" />
+      </geometry>
+      <surface>
+    <friction>
+      <ode>
+        <mu>1.0</mu>  
+        <mu2>1.0</mu2>
+      </ode>
+    </friction>
+  </surface>
+    </collision>
+  </link>
+  <joint
+    name="c12_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0579999999999974 0.189500000000067 0.058"
+      rpy="1.5707963267949 1.43325629427691 -4.4237103534764E-16" />
+    <parent
+      link="base_link" />
+    <child
+      link="c12_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="c13_Link">
+    <inertial>
+      <origin
+        xyz="-1.38777878078145E-17 -2.77555756156289E-17 0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832912" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c13_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c13_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="c13_joint"
+    type="continuous">
+    <origin
+      xyz="-0.156999999999998 0.189500000000067 0.058"
+      rpy="1.5707963267949 1.43325629427691 -4.4237103534764E-16" />
+    <parent
+      link="base_link" />
+    <child
+      link="c13_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="c14_Link">
+    <inertial>
+      <origin
+        xyz="1.38777878078145E-17 5.55111512312578E-17 0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832912" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c14_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c14_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="c14_joint"
+    type="continuous">
+    <origin
+      xyz="-0.256 0.189500000000067 0.058"
+      rpy="1.5707963267949 1.43325629427691 -4.4237103534764E-16" />
+    <parent
+      link="base_link" />
+    <child
+      link="c14_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="c15_Link">
+    <inertial>
+      <origin
+        xyz="0 5.55111512312578E-17 0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832912" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c15_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c15_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="c15_joint"
+    type="continuous">
+    <origin
+      xyz="-0.355 0.189500000000067 0.058"
+      rpy="1.5707963267949 1.43325629427691 -4.42371035347639E-16" />
+    <parent
+      link="base_link" />
+    <child
+      link="c15_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="c16_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832912" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c16_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c16_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="c16_joint"
+    type="continuous">
+    <origin
+      xyz="-0.454 0.189500000000067 0.058"
+      rpy="1.5707963267949 1.43325629427691 -4.42371035347642E-16" />
+    <parent
+      link="base_link" />
+    <child
+      link="c16_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  <link
+    name="cz1_Link">
+    <inertial>
+      <origin
+        xyz="-5.55111512312578E-17 0 -0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832913" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/cz1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/cz1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cz1_joint"
+    type="continuous">
+    <origin
+      xyz="-0.51 0.189500000000067 0.189"
+      rpy="1.5707963267949 0.654247383355556 -3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="cz1_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="c21_Link">
+    <inertial>
+      <origin
+        xyz="-5.55111512312578E-17 0 0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832913" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c21_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c21_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="c21_joint"
+    type="continuous">
+    <origin
+      xyz="-0.256 -0.1895 0.189"
+      rpy="1.5707963267949 -1.3930028104954 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="c21_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="c22_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832912" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c22_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c22_Link.STL" />
+      </geometry>
+      <surface>
+    <friction>
+      <ode>
+        <mu>1.0</mu>  
+        <mu2>1.0</mu2>
+      </ode>
+    </friction>
+  </surface>
+    </collision>
+  </link>
+  <joint
+    name="c22_joint"
+    type="continuous">
+    <origin
+      xyz="-0.0579999999999984 -0.1895 0.0580000000000014"
+      rpy="1.5707963267949 -1.39300281049541 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="c22_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="c23_Link">
+    <inertial>
+      <origin
+        xyz="0 2.77555756156289E-17 0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832912" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c23_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c23_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="c23_joint"
+    type="continuous">
+    <origin
+      xyz="-0.157 -0.1895 0.0580000000000014"
+      rpy="1.5707963267949 -1.39300281049541 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="c23_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="c24_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832912" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c24_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c24_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="c24_joint"
+    type="continuous">
+    <origin
+      xyz="-0.256 -0.1895 0.0580000000000014"
+      rpy="1.5707963267949 -1.39300281049541 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="c24_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="c25_Link">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 -5.55111512312578E-17 0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832912" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c25_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c25_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="c25_joint"
+    type="continuous">
+    <origin
+      xyz="-0.355 -0.1895 0.0580000000000014"
+      rpy="1.5707963267949 -1.39300281049541 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="c25_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="c26_Link">
+    <inertial>
+      <origin
+        xyz="0 5.55111512312578E-17 0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832911" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c26_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/c26_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="c26_joint"
+    type="continuous">
+    <origin
+      xyz="-0.454 -0.1895 0.0580000000000014"
+      rpy="1.5707963267949 -1.39300281049541 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="c26_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="cz2_Link">
+    <inertial>
+      <origin
+        xyz="-7.7715611723761E-16 0 0.0185"
+        rpy="0 0 0" />
+      <mass
+        value="0.0662121072832913" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/cz2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/cz2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <joint
+    name="cz2_joint"
+    type="continuous">
+    <origin
+      xyz="-0.51 -0.1895 0.189000000000006"
+      rpy="1.5707963267949 -1.39300281049541 3.14159265358979" />
+    <parent
+      link="base_link" />
+    <child
+      link="cz2_Link" />
+    <axis
+      xyz="0 0 -1" />
+  </joint>
+  <link
+    name="ld1_Link">
+    <!-- <inertial>
+      <origin
+        xyz="-0.257204665012702 -0.0498191956641411 -6.93889390390723E-16"
+        rpy="0 0 0" />
+      <mass
+        value="1.30492485608494" />
+      <inertia
+        ixx="0.03986577"
+        ixy="-0.03064018"
+        ixz="0.02357495"
+        iyy="0.09175072"
+        iyz="0.01599737"
+        izz="0.09377862" />
+    </inertial> -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/ld1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/ld1_Link.STL" />
+      </geometry>
+      <surface>
+            <contact>
+                <collide_without_contact>0</collide_without_contact> 
+            </contact>
+        </surface>
+    </collision> -->
+  </link>
+  <joint
+    name="ld1_joint"
+    type="fixed">
+    <origin
+      xyz="0 -0.170999999999993 0.181"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="ld1_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link
+    name="ld2_Link">
+    <!-- <inertial>
+      <origin
+        xyz="-0.257191515399751 -0.0500666586870707 -0.342000000000058"
+        rpy="0 0 0" />
+      <mass
+        value="1.30792494586438" />
+      <inertia
+        ixx="0.03986577"
+        ixy="-0.03064018"
+        ixz="0.02357495"
+        iyy="0.09175072"
+        iyz="0.01599737"
+        izz="0.09377862" />
+    </inertial> -->
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/ld2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.298039215686275 0.298039215686275 0.298039215686275 1" />
+      </material>
+    </visual>
+    <!-- <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_2/meshes/ld2_Link.STL" />
+      </geometry>
+      <surface>
+            <contact>
+                <collide_without_contact>0</collide_without_contact> 
+            </contact>
+        </surface>
+    </collision> -->
+  </link>
+  <joint
+    name="ld2_joint"
+    type="fixed">
+    <origin
+      xyz="0 -0.170999999999993 0.181"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="base_link" />
+    <child
+      link="ld2_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+
+<gazebo>
+    <plugin name="skid_steer_drive_controller" 
+            filename="libgazebo_ros_skid_steer_drive.so">
+        <rosDebugLevel>Debug</rosDebugLevel>
+        <publishWheelTF>true</publishWheelTF>
+        <robotNamespace>/</robotNamespace>
+        <publishTf>1</publishTf>
+        <publishWheelJointState>true</publishWheelJointState>
+        <updateRate>100.0</updateRate>
+        
+        <leftFrontJoint>zhu1_joint</leftFrontJoint>
+        <leftMiddleJoint1>c12_joint</leftMiddleJoint1>
+        <leftMiddleJoint2>c13_joint</leftMiddleJoint2>
+        <leftMiddleJoint3>c14_joint</leftMiddleJoint3>
+        <leftRearJoint>c15_joint</leftRearJoint>
+                       
+        <!-- <rightFrontJoint>zhu2_joint</rightFrontJoint>
+        <rightMiddleJoint1>c22_joint</rightMiddleJoint1>
+        <rightMiddleJoint2>c23_joint</rightMiddleJoint2>
+        <rightMiddleJoint3>c24_joint</rightMiddleJoint3>
+        <rightRearJoint>c25_joint</rightRearJoint> -->
+        
+        <wheelSeparation>0.302</wheelSeparation> 
+        
+        <leftWheelDiameter>0.1</leftWheelDiameter> 
+        <rightWheelDiameter>0.1</rightWheelDiameter> 
+        
+        <broadcastTF>1</broadcastTF>
+        
+        <torque>1000</torque>
+        <commandTopic>wheelleft_cmd_vel</commandTopic>
+        
+        <odometryFrame>odom</odometryFrame>
+        <odometryTopic>odom</odometryTopic> 
+        <robotBaseFrame>base_link</robotBaseFrame>
+    </plugin>
+    <plugin name="skid_steer_drive_controller" 
+            filename="libgazebo_ros_skid_steer_drive.so">
+        <rosDebugLevel>Debug</rosDebugLevel>
+        <publishWheelTF>true</publishWheelTF>
+        <robotNamespace>/</robotNamespace>
+        <publishTf>1</publishTf>
+        <publishWheelJointState>true</publishWheelJointState>
+        <updateRate>100.0</updateRate>
+        
+        <!-- <leftFrontJoint>zhu1_joint</leftFrontJoint>
+        <leftMiddleJoint1>c12_joint</leftMiddleJoint1>
+        <leftMiddleJoint2>c13_joint</leftMiddleJoint2>
+        <leftMiddleJoint3>c14_joint</leftMiddleJoint3>
+        <leftRearJoint>c15_joint</leftRearJoint> -->
+          
+        
+        <!-- <rightFrontJoint>zhu2_joint</rightFrontJoint>
+        <rightRearJoint>c22_joint</rightRearJoint>
+        <rightMiddleJoint>c25_joint</rightMiddleJoint> -->
+        <rightFrontJoint>zhu2_joint</rightFrontJoint>
+        <rightMiddleJoint1>c22_joint</rightMiddleJoint1>
+        <rightMiddleJoint2>c23_joint</rightMiddleJoint2>
+        <rightMiddleJoint3>c24_joint</rightMiddleJoint3>
+        <rightRearJoint>c25_joint</rightRearJoint>
+
+        <wheelSeparation>0.302</wheelSeparation> 
+        
+        <leftWheelDiameter>0.1</leftWheelDiameter> 
+        <rightWheelDiameter>0.1</rightWheelDiameter> 
+        
+        <broadcastTF>1</broadcastTF>        
+        <torque>1000</torque>
+        <commandTopic>wheelright_cmd_vel</commandTopic>        
+        <odometryFrame>odom</odometryFrame>
+        <odometryTopic>odom</odometryTopic> 
+        <robotBaseFrame>base_link</robotBaseFrame>
+    </plugin>
+
+    <plugin name="jiang1_controller" filename="libjoint_effort_controller.so">
+        <joint name="jiang1_joint" />
+        <effort_controller type="effort_controllers/JointEffortController">
+        <commandTopic>jiang1_effort_cmd</commandTopic>
+        </effort_controller>
+    </plugin>
+
+    <plugin name="jiang2_controller" filename="libjoint_effort_controller.so">
+      <joint name="jiang2_joint" />
+      <effort_controller type="effort_controllers/JointEffortController">
+      <commandTopic>jiang2_effort_cmd</commandTopic>
+      </effort_controller>
+    </plugin>
+
+    <plugin name="jiang3_controller" filename="libjoint_effort_controller.so">
+      <joint name="jiang3_joint"/>
+      <effort_controller type="effort_controllers/JointEffortController">
+      <commandTopic>jiang3_effort_cmd</commandTopic>
+      </effort_controller>
+    </plugin>
+
+    <plugin name="jiang4_controller" filename="libjoint_effort_controller.so">
+      <joint name="jiang4_joint"/>
+      <effort_controller type="effort_controllers/JointEffortController">
+      <commandTopic>jiang4_effort_cmd</commandTopic>
+      </effort_controller>
+    </plugin>
+
+    <plugin name="jiang5_controller" filename="libjoint_effort_controller.so">
+      <joint name="jiang5_joint"/>
+      <effort_controller type="effort_controllers/JointEffortController">
+      <commandTopic>jiang5_effort_cmd</commandTopic>
+      </effort_controller>
+    </plugin>
+
+    <plugin name="jiang6_controller" filename="libjoint_effort_controller.so">
+      <joint name="jiang6_joint"/>
+      <effort_controller type="effort_controllers/JointEffortController">
+      <commandTopic>jiang6_effort_cmd</commandTopic>
+      </effort_controller>
+    </plugin>
+
+</gazebo>
+
+
+
+
+
+
+
+
+</robot>

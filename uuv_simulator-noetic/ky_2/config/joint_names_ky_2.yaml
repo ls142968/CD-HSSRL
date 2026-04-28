@@ -1,0 +1,2 @@
+controller_joint_names: ['zhu1_joint', 'zhu2_joint', 'jiang1_joint', 'jiang2_joint', 'jiang3_joint', 'jiang4_joint', 'jiang5_joint', 'jiang6_joint', 'c11_joint', 'c12_joint', 'c13_joint', 'c14_joint', 'c15_joint', 'c16_joint', 'cz1_joint', 'c21_joint', 'c22_joint', 'c23_joint', 'c24_joint', 'c25_joint', 'c26_joint', 'cz2_joint', ]
+#controller_joint_names: ['zhu1_joint', 'zhu2_joint', 'jiang1_joint', 'jiang2_joint', 'jiang3_joint', 'jiang4_joint', 'jiang5_joint', 'jiang6_joint', 'c11_joint', 'c16_joint',  'c21_joint',  'c26_joint' ]

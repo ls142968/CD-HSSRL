@@ -1,0 +1,1326 @@
+<?xml version="1.0"?>
+
+<robot name="ky_3" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  <xacro:arg name="debug" default="0"/>
+  <xacro:arg name="namespace" default="ky3_origin"/>
+  <xacro:arg name="inertial_reference_frame" default="world"/> 
+  <link name="$(arg namespace)/base_link">
+    <inertial>
+      <origin
+        xyz="0 0 0.14"
+        rpy="0 0 0" />
+      <mass
+        value="10.0" />
+      <inertia
+        ixx="0.171"
+        ixy="0"
+        ixz="-0.0007"
+        iyy="0"
+        iyz="0"
+        izz="0.521" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/base_link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/base_link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  <gazebo reference="$(arg namespace)/base_link">
+    <material>Gazebo/Grey</material>
+  </gazebo>
+  
+  <link name="$(arg namespace)/propeller1_Link">
+    <inertial>
+      <origin
+        xyz="7.09242094221185E-08 -0.00199868380104069 0.0256021562412026"
+        rpy="0 0 0" />
+      <mass
+        value="0.414409363255111" />
+      <inertia
+        ixx="0.0003281944216786"
+        ixy="3.26068805475567E-10"
+        ixz="8.29625612277526E-10"
+        iyy="0.00032610075624694"
+        iyz="5.80579089096782E-07"
+        izz="0.000410643139202458" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="$(arg namespace)/propeller1_joint" type="fixed">
+    <origin
+      xyz="0.181500000000014 0.298425971355227 0.159560518489246"
+      rpy="-0.785398163397452 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/propeller1_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  
+  <link name="$(arg namespace)/propeller2_Link">
+    <inertial>
+      <origin
+        xyz="-5.59307258007902E-08 0.00199868691646961 0.0256021626229174"
+        rpy="0 0 0" />
+      <mass
+        value="0.414409181908558" />
+      <inertia
+        ixx="0.000328195290466345"
+        ixy="3.61385579101102E-10"
+        ixz="-7.27506355535285E-10"
+        iyy="0.000326101406380341"
+        iyz="-5.80563203926216E-07"
+        izz="0.000410642909290001" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller2_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller2_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint name="$(arg namespace)/propeller2_joint"  type="fixed">
+    <origin
+      xyz="0.181499999999985 -0.298425971355227 0.159560518489247"
+      rpy="0.785398163397452 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/propeller2_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+  <link  name="$(arg namespace)/propeller3_Link">
+    <inertial>
+      <origin
+        xyz="7.09023045830648E-08 -0.00199868373451906 0.0256021561055486"
+        rpy="0 0 0" />
+      <mass
+        value="0.414409365807567" />
+      <inertia
+        ixx="0.000328195009727699"
+        ixy="3.25949519903211E-10"
+        ixz="8.29457397819805E-10"
+        iyy="0.000326101344749567"
+        iyz="5.80579591074907E-07"
+        izz="0.000410643140172733" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller3_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller3_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="$(arg namespace)/propeller3_joint"   type="fixed">
+    <origin
+      xyz="-0.253499999999987 0.334941271600732 0.174540171291753"
+      rpy="0.78539816339745 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/propeller3_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  
+  <link   name="$(arg namespace)/propeller4_Link">
+    <inertial>
+      <origin
+        xyz="-7.28524880422299E-08 0.00199868355394961 0.0256021570457827"
+        rpy="0 0 0" />
+      <mass
+        value="0.414409341819862" />
+      <inertia
+        ixx="0.000328194124042591"
+        ixy="3.30539341629614E-10"
+        ixz="-8.44396023390456E-10"
+        iyy="0.000326100429833741"
+        iyz="-5.80581792791567E-07"
+        izz="0.000410643109466097" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller4_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller4_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint   name="$(arg namespace)/propeller4_joint"   type="fixed">
+    <origin
+      xyz="-0.253500000000015 -0.334941271600732 0.174540171291754"
+      rpy="-0.785398163397449 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/propeller4_Link" />
+    <axis
+      xyz="0 0 1" />
+  </joint>
+  
+  <link  name="$(arg namespace)/propeller5_Link">
+    <inertial>
+      <origin
+        xyz="0.0256013697546785 -7.08879361321912E-08 0.00199874004821321"
+        rpy="0 0 0" />
+      <mass
+        value="0.414401384542534" />
+      <inertia
+        ixx="0.000410634033077079"
+        ixy="-8.41824564339678E-10"
+        ixz="-5.79460173421178E-07"
+        iyy="0.000328169837008807"
+        iyz="1.17547614490522E-10"
+        izz="0.000326092232215981" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller5_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller5_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="$(arg namespace)/propeller5_joint"   type="fixed">
+    <origin
+      xyz="-0.0607093695504775 0.2942 0.191259999999984"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/propeller5_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  
+  <link  name="$(arg namespace)/propeller6_Link">
+    <inertial>
+      <origin
+        xyz="0.025601369722401 7.07663273813441E-08 -0.00199874003853573"
+        rpy="0 0 0" />
+      <mass
+        value="0.414401385208956" />
+      <inertia
+        ixx="0.000410634033771718"
+        ixy="8.41011541183698E-10"
+        ixz="5.79460204650533E-07"
+        iyy="0.000328169849793526"
+        iyz="1.18157627413255E-10"
+        izz="0.000326092245878525" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller6_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller6_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="$(arg namespace)/propeller6_joint"   type="fixed">
+    <origin
+      xyz="-0.0607093695504776 -0.2942 0.191260000000012"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/propeller6_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  
+  <link   name="$(arg namespace)/propeller7_Link">
+    <inertial>
+      <origin
+        xyz="0.0256013698246613 -7.08212191946611E-08 0.00199874010089213"
+        rpy="0 0 0" />
+      <mass
+        value="0.414401382953397" />
+      <inertia
+        ixx="0.000410634032627552"
+        ixy="-8.41290807628331E-10"
+        ixz="-5.79459737933365E-07"
+        iyy="0.000328169818776531"
+        iyz="1.18040651879504E-10"
+        izz="0.000326092214201353" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller7_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller7_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="$(arg namespace)/propeller7_joint"   type="fixed">
+    <origin
+      xyz="-0.0607093695504765 0.2942 0.0912599999999866"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/propeller7_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+  
+  <link  name="$(arg namespace)/propeller8_Link">
+    <inertial>
+      <origin
+        xyz="0.0256013697803822 7.08926537612564E-08 -0.00199874004666173"
+        rpy="0 0 0" />
+      <mass
+        value="0.414401383895445" />
+      <inertia
+        ixx="0.00041063403301386"
+        ixy="8.41959162780188E-10"
+        ixz="5.79460201016688E-07"
+        iyy="0.000328169749120125"
+        iyz="1.1769377903609E-10"
+        izz="0.000326092144223429" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller8_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="0.698039215686274 0.698039215686274 0.698039215686274 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/propeller8_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint   name="$(arg namespace)/propeller8_joint"   type="fixed">
+    <origin
+      xyz="-0.0607093695504763 -0.2942 0.0912600000000148"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/propeller8_Link" />
+    <axis
+      xyz="1 0 0" />
+  </joint>
+
+  <link  name="$(arg namespace)/depth_Link">
+    <inertial>
+      <origin
+        xyz="-0.0172663810569851 0 -7.72299573207768E-19"
+        rpy="0 0 0" />
+      <mass
+        value="0.0125849767819091" />
+      <inertia
+        ixx="5.43278134760562E-07"
+        ixy="1.73855064409688E-22"
+        ixz="-2.56705375893747E-24"
+        iyy="2.44600527249463E-06"
+        iyz="3.17563846005771E-23"
+        izz="2.44600527249463E-06" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/depth_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/depth_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+
+  <joint  name="$(arg namespace)/depth_joint"   type="fixed">
+    <origin
+      xyz="0.213 0 0.19"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/depth_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+  <link  name="$(arg namespace)/GPS_Link">
+    <inertial>
+      <origin
+        xyz="-0.000168183936074651 1.16553658051338E-05 0.0549692021321196"
+        rpy="0 0 0" />
+      <mass
+        value="0.385473836528922" />
+      <inertia
+        ixx="0.00069996351025094"
+        ixy="-6.00188043940581E-08"
+        ixz="-1.52698790227809E-08"
+        iyy="0.000701636698867305"
+        iyz="4.22832495872188E-07"
+        izz="0.000771351524393107" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/GPS_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/GPS_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint   name="$(arg namespace)/GPS_joint"   type="fixed">
+    <origin
+      xyz="-0.297 0 0.333"
+      rpy="0 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/GPS_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+  <link  name="$(arg namespace)/gyro_Link">
+    <inertial>
+      <origin
+        xyz="2.77555756156289E-17 0.01 -1.35525271560688E-18"
+        rpy="0 0 0" />
+      <mass
+        value="0.05" />
+      <inertia
+        ixx="1.20833333333333E-05"
+        ixy="1.76465197344646E-22"
+        ixz="-8.97290235458056E-22"
+        iyy="2.08333333333333E-05"
+        iyz="-1.98087550916956E-37"
+        izz="1.20833333333333E-05" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/gyro_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 1" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/gyro_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <joint  name="$(arg namespace)/gyro_joint"   type="fixed">
+    <origin
+      xyz="0.15 0 0.12"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/gyro_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+  <link   name="$(arg namespace)/motor_left1_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0185"
+        rpy="0 0 0" />
+      <mass  value="0.5" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor1_add1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+	  <surface>
+        <friction>
+          <ode>
+            <mu>0.5</mu>
+            <mu2>0.5</mu2>
+			<kp>1000000.0</kp>
+            <kd>1.0</kd>
+          </ode>
+        </friction>
+      </surface>
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor1_add1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <gazebo reference="$(arg namespace)/motor_left1_Link">
+    <mu1>1.2</mu1>
+    <mu2>1.2</mu2>
+    <kp>1e8</kp>
+    <kd>1.0</kd>
+    <fdir1>1 0 0</fdir1>
+    <maxVel>1.0</maxVel>
+  </gazebo>
+  
+  <joint   name="$(arg namespace)/motor_left1_joint"   type="continuous">
+    <origin
+      xyz="0.22 0.1935 0.01"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/motor_left1_Link" />
+    <axis
+      xyz="0 0 -1" />
+	<dynamics damping="1.0" friction="0.5"/>
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+   
+  <link   name="$(arg namespace)/motor_left2_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0185"
+        rpy="0 0 0" />
+      <mass    value="0.5" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor1_add5_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+	  <surface>
+        <friction>
+          <ode>
+            <mu>0.5</mu>
+            <mu2>0.5</mu2>
+			<kp>1000000.0</kp>
+            <kd>1.0</kd>
+          </ode>
+        </friction>
+      </surface>
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor1_add5_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <gazebo reference="$(arg namespace)/motor_left2_Link">
+    <mu1>1.2</mu1>
+    <mu2>1.2</mu2>
+    <kp>1e8</kp>
+    <kd>1.0</kd>
+    <fdir1>1 0 0</fdir1>
+    <maxVel>1.0</maxVel>
+  </gazebo>
+  
+  <joint   name="$(arg namespace)/motor_left2_joint"   type="continuous">
+    <origin
+      xyz="-0.32 0.1935 0.01"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/motor_left2_Link" />
+    <axis
+      xyz="0 0 -1" />
+	<dynamics damping="1.0" friction="0.5"/>
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+    
+  <link    name="$(arg namespace)/motor_right1_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0185"
+        rpy="0 0 0" />
+      <mass  value="0.5" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor2_add1_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+	  <surface>
+        <friction>
+          <ode>
+            <mu>0.5</mu>
+            <mu2>0.5</mu2>
+			<kp>1000000.0</kp>
+            <kd>1.0</kd>
+          </ode>
+        </friction>
+      </surface>
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor2_add1_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <gazebo reference="$(arg namespace)/motor_right1_Link">
+    <mu1>1.2</mu1>
+    <mu2>1.2</mu2>
+    <kp>1e8</kp>
+    <kd>1.0</kd>
+    <fdir1>1 0 0</fdir1>
+    <maxVel>1.0</maxVel>
+  </gazebo>
+  
+  <joint  name="$(arg namespace)/motor_right1_joint"   type="continuous">
+    <origin
+      xyz="0.22 -0.1565 0.01"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/motor_right1_Link" />
+    <axis
+      xyz="0 0 -1" />
+	<dynamics damping="1.0" friction="0.5"/>
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+  
+  <link    name="$(arg namespace)/motor_right2_Link">
+    <inertial>
+      <origin
+        xyz="0 0 0.0185"
+        rpy="0 0 0" />
+      <mass    value="0.5" />
+      <inertia
+        ixx="0.00007201"
+        ixy="0"
+        ixz="0"
+        iyy="0.00007201"
+        iyz="0"
+        izz="0.00005273" />
+    </inertial>
+    <visual>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor2_add5_Link.STL" />
+      </geometry>
+      <material
+        name="">
+        <color
+          rgba="1 1 1 0.35" />
+      </material>
+    </visual>
+    <collision>
+      <origin
+        xyz="0 0 0"
+        rpy="0 0 0" />
+	  <surface>
+        <friction>
+          <ode>
+            <mu>0.5</mu>
+            <mu2>0.5</mu2>
+			<kp>1000000.0</kp>
+            <kd>1.0</kd>
+          </ode>
+        </friction>
+      </surface>
+      <geometry>
+        <mesh
+          filename="package://ky_3/meshes/motor2_add5_Link.STL" />
+      </geometry>
+    </collision>
+  </link>
+  
+  <gazebo reference="$(arg namespace)/motor_right2_Link">
+    <mu1>1.2</mu1>
+    <mu2>1.2</mu2>
+    <kp>1e8</kp>
+    <kd>1.0</kd>
+    <fdir1>1 0 0</fdir1>
+    <maxVel>1.0</maxVel>
+  </gazebo>
+  
+  <joint    name="$(arg namespace)/motor_right2_joint"    type="continuous">
+    <origin
+      xyz="-0.32 -0.1565 0.01"
+      rpy="1.5707963267949 0 0" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/motor_right2_Link" />
+    <axis
+      xyz="0 0 -1" />
+	<dynamics damping="1.0" friction="0.5"/>
+    <hardwareInterface>VelocityJointInterface</hardwareInterface>
+  </joint>
+  
+  <gazebo>
+    <plugin name="skid_steer_drive_controller" 
+            filename="libgazebo_ros_skid_steer_drive.so">
+        <rosDebugLevel>Debug</rosDebugLevel>
+        <publishWheelTF>true</publishWheelTF>
+        <robotNamespace>/</robotNamespace>
+        <publishTf>1</publishTf> 
+        <publishWheelJointState>true</publishWheelJointState>
+        <updateRate>50.0</updateRate>
+        
+        <leftFrontJoint>$(arg namespace)/motor_left1_joint</leftFrontJoint>
+        <leftRearJoint>$(arg namespace)/motor_left2_joint</leftRearJoint>
+		
+		<rightFrontJoint>$(arg namespace)/motor_right1_joint</rightFrontJoint>
+		<rightRearJoint>$(arg namespace)/motor_right2_joint</rightRearJoint>
+
+        <wheelSeparation>1.18</wheelSeparation>        
+        <wheelDiameter>0.08</wheelDiameter> 
+		<wheelTorque>50000.0</wheelTorque>  
+		
+        <broadcastTF>1</broadcastTF>
+        
+        <torque>50000</torque>
+        <commandTopic>cmd_vel</commandTopic>
+        <odometryFrame>odom</odometryFrame>
+        <odometryTopic>odom</odometryTopic> 
+        <robotBaseFrame>$(arg namespace)/base_link</robotBaseFrame>
+    </plugin>
+	
+	<plugin name="uuv_plugin" filename="libuuv_underwater_object_ros_plugin.so">
+      <!-- Hydro parameters for the vehicle -->
+      <fluid_density>1028.0</fluid_density>
+      <flow_velocity_topic>hydrodynamics/current_velocity</flow_velocity_topic>
+      <debug>$(arg debug)</debug>
+      
+      <link name="$(arg namespace)/base_link">
+        <!--neutrally_buoyant>1</neutrally_buoyant -->
+        <!--Volume, see p.31 in Berg2012-->
+        <volume>0.0155</volume> 
+        <center_of_buoyancy>0.0 0.0 0.25</center_of_buoyancy>
+		<height>0.0</height>
+        <hydrodynamic_model>
+          <type>fossen</type>       
+		  <added_mass>
+            10.5 0 0 0 0 0
+            0 24.7 0 0 0 0
+            0 0 28.57 0 0 0
+            0 0 0 0.24 0 0
+            0 0 0 0 0.24 0
+            0 0 0 0 0 0.24
+          </added_mass>
+          <linear_damping>
+             -12.03 -20.22 -16.18 -1.4 -1.4 -1.4
+          </linear_damping>
+          <quadratic_damping>
+            -28.18 -29.66 -46.99 -2.55 -2.55 -2.55
+          </quadratic_damping>
+        </hydrodynamic_model>
+      </link>
+    </plugin>
+  </gazebo> 
+  
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+      <robotNamespace>/$(arg namespace)</robotNamespace>
+      <robotParam>robot_description</robotParam>
+    </plugin>
+  </gazebo>
+  
+  <xacro:include filename="$(find uuv_descriptions)/urdf/common.urdf.xacro"/>
+  <xacro:include filename="$(find uuv_sensor_ros_plugins)/urdf/sensor_snippets.xacro"/>
+  <!--Various thruster models-->
+  <xacro:include filename="$(find uuv_gazebo_ros_plugins)/urdf/thruster_snippets.xacro"/>
+  
+  <!-- Define thrusters for propulsion -->
+  <xacro:property name="prop_mesh_file" value="file://$(find uuv_descriptions)/meshes/Propeller.dae"/>
+  
+  <xacro:macro name="thruster_macro"
+	      params="thruster_id *origin">
+    <xacro:thruster_module_first_order_basic_fcn_macro
+       namespace="$(arg namespace)"
+       thruster_id="${thruster_id}"
+       mesh_filename="${prop_mesh_file}"
+       dyn_time_constant="0.03"
+       rotor_constant="0.006">
+       <xacro:insert_block name="origin"/>
+    </xacro:thruster_module_first_order_basic_fcn_macro>
+ </xacro:macro>
+ 
+  <xacro:thruster_macro thruster_id="0">
+    <origin
+      xyz="0.182 0.3 0.191"
+       rpy="0 ${135*d2r} ${90*d2r}" />
+  </xacro:thruster_macro>
+
+  <xacro:thruster_macro thruster_id="1">
+    <origin
+      xyz="0.182 -0.3 0.191"
+      rpy="0 ${-135*d2r} ${-90*d2r} " />
+  </xacro:thruster_macro>
+
+  <xacro:thruster_macro thruster_id="2">
+    <origin
+      xyz="-0.257 0.3 0.191"
+       rpy="0 ${45*d2r} ${90*d2r}" />
+  </xacro:thruster_macro>
+ 
+  <xacro:thruster_macro thruster_id="3">
+    <origin
+      xyz="-0.257 -0.3 0.191"
+       rpy="0 ${-45*d2r} ${-90*d2r} " />
+  </xacro:thruster_macro>
+
+  <xacro:thruster_macro thruster_id="4">
+    <origin
+      xyz="0 0.285 0.19"
+      rpy="0 0 0" />
+  </xacro:thruster_macro>
+
+  <xacro:thruster_macro thruster_id="5">
+    <origin
+      xyz="0 -0.285 0.19"
+      rpy="0 0 0" />
+  </xacro:thruster_macro>
+
+  <xacro:thruster_macro thruster_id="6"> 
+    <origin
+      xyz="0 0.285 0.09"
+      rpy="0 0 0" />
+  </xacro:thruster_macro>
+
+  <xacro:thruster_macro thruster_id="7">
+    <origin
+      xyz="0 -0.285 0.09"
+      rpy="0 0 0" />
+  </xacro:thruster_macro>
+  
+  <!-- Magnetometer  -->
+  <!--ro:default_magnetometer namespace="$(arg namespace)" parent_link="$(arg namespace)/base_link"/-->
+
+  <!-- Pressure  -->
+  <xacro:default_pressure_macro namespace="$(arg namespace)" parent_link="$(arg namespace)/base_link">
+    <origin 
+	  xyz="0.213 0 0.19"
+      rpy="0 0 0" />
+  </xacro:default_pressure_macro>
+
+  <!-- IMU  -->
+  <xacro:default_imu_macro
+    namespace="$(arg namespace)"
+    parent_link="$(arg namespace)/base_link"
+    inertial_reference_frame="world">
+    <origin xyz="0 0 0" rpy="0 0 0"/>
+  </xacro:default_imu_macro>
+
+  <!-- Mount a GPS. -->
+  <xacro:default_gps namespace="$(arg namespace)" parent_link="$(arg namespace)/base_link" />
+
+  <!-- Mount 4 ultrasonic sensors. -->
+  <link name="$(arg namespace)/ultrasonic1_Link">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0" rpy="0 ${90*d2r} 0" />
+      <inertia ixx="1e-6" iyy="1e-6" izz="1e-6" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+	<visual>
+      <geometry>
+        <cylinder length="0.02" radius="0.01"/>  <!-- 以圆柱形状代替 -->
+      </geometry>
+    </visual>
+  </link>
+  <joint  name="$(arg namespace)/ultrasonic1_joint"   type="fixed">
+    <origin
+      xyz="0.47 -0.11 0.3"
+      rpy="0 0 ${-75*d2r}" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/ultrasonic1_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link name="$(arg namespace)/ultrasonic2_Link">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0" rpy="0 ${90*d2r} 0" />
+      <inertia ixx="1e-6" iyy="1e-6" izz="1e-6" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+	<visual>
+      <geometry>
+        <cylinder length="0.02" radius="0.01"/>  <!-- 以圆柱形状代替 -->
+      </geometry>
+    </visual>
+  </link>
+  <joint  name="$(arg namespace)/ultrasonic2_joint"   type="fixed">
+    <origin
+      xyz="0.47 -0.04 0.3"
+      rpy="0 0 ${-25*d2r}" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/ultrasonic2_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link name="$(arg namespace)/ultrasonic3_Link">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0" rpy="0 ${90*d2r} 0" />
+      <inertia ixx="1e-6" iyy="1e-6" izz="1e-6" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+	<visual>
+      <geometry>
+        <cylinder length="0.02" radius="0.01"/>  <!-- 以圆柱形状代替 -->
+      </geometry>
+    </visual>
+  </link>
+  <joint  name="$(arg namespace)/ultrasonic3_joint"   type="fixed">
+    <origin
+      xyz="0.47 0.04 0.3"
+      rpy="0 0 ${25*d2r}" />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/ultrasonic3_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  <link name="$(arg namespace)/ultrasonic4_Link">
+    <inertial>
+      <mass value="0.01"/>
+      <origin xyz="0 0 0" rpy="0 ${90*d2r} 0" />
+      <inertia ixx="1e-6" iyy="1e-6" izz="1e-6" ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+	<visual>
+      <geometry>
+        <cylinder length="0.02" radius="0.01"/>  <!-- 以圆柱形状代替 -->
+      </geometry>
+    </visual>
+  </link>
+  <joint  name="$(arg namespace)/ultrasonic4_joint"   type="fixed">
+    <origin
+      xyz="0.47 0.11 0.3"
+      rpy="0 0 ${75*d2r}"  />
+    <parent
+      link="$(arg namespace)/base_link" />
+    <child
+      link="$(arg namespace)/ultrasonic4_Link" />
+    <axis
+      xyz="0 0 0" />
+  </joint>
+  
+  <gazebo reference="$(arg namespace)/ultrasonic1_Link">
+    <material>Gazebo/Red</material>
+    <sensor name="ultrasonic1_sensor" type="ray">
+      <update_rate>10</update_rate>
+      <pose>0 0 0 0 0 0</pose>
+	  <visualize>true</visualize>
+      <ray>
+        <scan>
+          <horizontal>   <!-- 水平方向 -->
+            <samples>10</samples>
+            <resolution>1</resolution> 
+            <min_angle>-0.436</min_angle>  <!-- 角度范围最小值 -7.5度 -->
+            <max_angle>0.436</max_angle>   <!-- 角度范围最大值 7.5度 -->
+          </horizontal>
+          <vertical>     <!-- 垂直方向 参数同上-->
+            <samples>5</samples>
+            <resolution>1</resolution> 
+            <min_angle>-0.06</min_angle> 
+            <max_angle>0.06</max_angle> 
+          </vertical>
+        </scan>
+        <range>
+          <min>0.1</min>          <!-- 最小测距 -->
+          <max>5.0</max>          <!-- 最大测距 -->
+          <resolution>0.05</resolution>
+        </range>
+      </ray>
+      <plugin name="ultrasonic_plugin" filename="libgazebo_ros_range.so">
+	    <alwaysOn>true</alwaysOn>
+        <topicName>ultrasonic1</topicName>
+        <output_type>sensor_msgs/Range</output_type>
+        <frameName>ultrasonic1_Link</frameName>
+        <radiation>ultrasound</radiation>
+        <fov>0.8</fov>
+        <gaussianNoise>0.01</gaussianNoise>
+      </plugin>
+    </sensor>
+  </gazebo>
+  
+  <gazebo reference="$(arg namespace)/ultrasonic2_Link">
+    <material>Gazebo/Red</material>
+    <sensor name="ultrasonic2_sensor" type="ray">
+      <update_rate>10</update_rate>
+      <pose>0 0 0 0 0 0</pose>
+	  <visualize>true</visualize>
+      <ray>
+        <scan>
+          <horizontal>   <!-- 水平方向 -->
+            <samples>10</samples>
+            <resolution>1</resolution> 
+            <min_angle>-0.436</min_angle>  <!-- 角度范围最小值 -7.5度 -->
+            <max_angle>0.436</max_angle>   <!-- 角度范围最大值 7.5度 -->
+          </horizontal>
+          <vertical>     <!-- 垂直方向 参数同上-->
+            <samples>5</samples>
+            <resolution>1</resolution> 
+            <min_angle>-0.06</min_angle> 
+            <max_angle>0.06</max_angle> 
+          </vertical>
+        </scan>
+        <range>
+          <min>0.1</min>          <!-- 最小测距 -->
+          <max>5.0</max>          <!-- 最大测距 -->
+          <resolution>0.05</resolution>
+        </range>
+      </ray>
+      <plugin name="ultrasonic_plugin" filename="libgazebo_ros_range.so">
+	    <alwaysOn>true</alwaysOn>
+        <topicName>ultrasonic2</topicName>
+		<output_type>sensor_msgs/Range</output_type>
+        <frameName>ultrasonic2_Link</frameName>
+        <radiation>ultrasound</radiation>
+        <fov>0.8</fov>
+        <gaussianNoise>0.01</gaussianNoise>
+      </plugin>
+    </sensor>
+  </gazebo>
+  
+  <gazebo reference="$(arg namespace)/ultrasonic3_Link">
+    <material>Gazebo/Red</material>
+    <sensor name="ultrasonic3_sensor" type="ray">
+      <update_rate>10</update_rate>
+      <pose>0 0 0 0 0 0</pose>
+	  <visualize>true</visualize>
+      <ray>
+        <scan>
+          <horizontal>   <!-- 水平方向 -->
+            <samples>10</samples>
+            <resolution>1</resolution> 
+            <min_angle>-0.436</min_angle>  <!-- 角度范围最小值 -7.5度 -->
+            <max_angle>0.436</max_angle>   <!-- 角度范围最大值 7.5度 -->
+          </horizontal>
+          <vertical>     <!-- 垂直方向 参数同上-->
+            <samples>5</samples>
+            <resolution>1</resolution> 
+            <min_angle>-0.06</min_angle> 
+            <max_angle>0.06</max_angle> 
+          </vertical>
+        </scan>
+        <range>
+          <min>0.1</min>          <!-- 最小测距 -->
+          <max>5.0</max>          <!-- 最大测距 -->
+          <resolution>0.05</resolution>
+        </range>
+      </ray>
+      <plugin name="ultrasonic_plugin" filename="libgazebo_ros_range.so">
+	    <alwaysOn>true</alwaysOn>
+        <topicName>ultrasonic3</topicName>
+		<output_type>sensor_msgs/Range</output_type>
+        <frameName>ultrasonic3_Link</frameName>
+        <radiation>ultrasound</radiation>
+        <fov>0.8</fov>
+        <gaussianNoise>0.01</gaussianNoise>
+      </plugin>
+    </sensor>
+  </gazebo> 
+  
+  <gazebo reference="$(arg namespace)/ultrasonic4_Link">
+    <material>Gazebo/Red</material>
+    <sensor name="ultrasonic4_sensor" type="ray">
+      <update_rate>10</update_rate>
+      <pose>0 0 0 0 0 0</pose>
+	  <visualize>true</visualize>
+      <ray>
+        <scan>
+          <horizontal>   <!-- 水平方向 -->
+            <samples>10</samples>
+            <resolution>1</resolution> 
+            <min_angle>-0.436</min_angle>  <!-- 角度范围最小值 -7.5度 -->
+            <max_angle>0.436</max_angle>   <!-- 角度范围最大值 7.5度 -->
+          </horizontal>
+          <vertical>     <!-- 垂直方向 参数同上-->
+            <samples>5</samples>
+            <resolution>1</resolution> 
+            <min_angle>-0.06</min_angle> 
+            <max_angle>0.06</max_angle> 
+          </vertical>
+        </scan>
+        <range>
+          <min>0.1</min>          <!-- 最小测距 -->
+          <max>5.0</max>          <!-- 最大测距 -->
+          <resolution>0.05</resolution>
+        </range>
+      </ray>
+      <plugin name="ultrasonic_plugin" filename="libgazebo_ros_range.so">
+	    <alwaysOn>true</alwaysOn>
+        <topicName>ultrasonic4</topicName>
+		<output_type>sensor_msgs/Range</output_type>
+        <frameName>ultrasonic4_Link</frameName>
+        <radiation>ultrasound</radiation>
+        <fov>0.8</fov>
+        <gaussianNoise>0.01</gaussianNoise>
+      </plugin>
+    </sensor>
+  </gazebo>
+  
+  
+  <gazebo>
+    <plugin name="uuv_joint_state_publisher" filename="libuuv_joint_state_publisher.so">
+      <robotNamespace>$(arg namespace)</robotNamespace>
+      <updateRate>50</updateRate>
+    </plugin>
+  </gazebo>  
+   
+</robot>

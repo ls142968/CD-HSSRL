@@ -1,0 +1,22 @@
+<?xml version="1.0" ?>
+<sdf version="1.6">
+  <world name="water_land_slope">
+
+    <!-- 地形斜坡 -->
+    <include>
+      <uri>model://terrain_with_slope</uri>
+      <pose>0 0 0 0 0 0</pose>
+    </include>
+
+
+    <!-- 光源 -->
+    <include>
+      <uri>model://sun</uri>
+    </include>
+
+    <!-- 其他模型和机器人 -->
+    <!-- ... -->
+
+  </world>
+</sdf>
+

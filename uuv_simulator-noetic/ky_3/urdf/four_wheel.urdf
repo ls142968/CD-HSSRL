@@ -1,0 +1,182 @@
+<?xml version="1.0"?>
+<robot name="four_wheel" xmlns:xacro="http://ros.org/wiki/xacro">
+
+  <!-- Base link (车身) -->
+  <link name="base_link">
+    <inertial>
+      <mass value="20.0"/>
+      <origin xyz="0 0 0" rpy="0 0 0"/>
+      <inertia ixx="1" iyy="1" izz="1"
+               ixy="0" ixz="0" iyz="0"/>
+    </inertial>
+    <visual>
+	  <origin
+        xyz="0 0 0.3"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.8 0.5 0.2"/> <!-- 长宽高 -->
+      </geometry>
+      <material name="blue">
+        <color rgba="0 0 1 1"/>
+      </material>
+    </visual>
+    <collision>
+	  <origin
+        xyz="0 0 0.3"
+        rpy="0 0 0" />
+      <geometry>
+        <box size="0.8 0.5 0.2"/>
+      </geometry>
+    </collision>
+  </link>
+
+  <!-- ===== 四个轮子 ===== -->
+  <!-- 左前轮 -->
+  <link name="left_front_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+      <material name="black">
+        <color rgba="0 0 0 1"/>
+      </material>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+  </link>
+
+  <!-- 左后轮 -->
+  <link name="left_rear_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+  </link>
+
+  <!-- 右前轮 -->
+  <link name="right_front_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+  </link>
+
+  <!-- 右后轮 -->
+  <link name="right_rear_wheel">
+    <visual>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+    </visual>
+    <collision>
+      <geometry>
+        <cylinder radius="0.1" length="0.05"/>
+      </geometry>
+      <origin xyz="0 0 0" rpy="1.5707 0 0"/>
+      <surface>
+        <friction>
+          <ode>
+            <mu>1.0</mu>
+            <mu2>1.0</mu2>
+          </ode>
+        </friction>
+      </surface>
+    </collision>
+  </link>
+
+  <!-- ===== 四个轮子关节 ===== -->
+  <joint name="left_front_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_front_wheel"/>
+    <origin xyz="0.3 0.3 -0.3" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="left_rear_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="left_rear_wheel"/>
+    <origin xyz="-0.3 0.3 -0.3" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="right_front_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_front_wheel"/>
+    <origin xyz="0.3 -0.3 -0.3" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <joint name="right_rear_wheel_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="right_rear_wheel"/>
+    <origin xyz="-0.3 -0.3 -0.3" rpy="0 0 0"/>
+    <axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- ===== Gazebo 插件 (Skid Steer Drive) ===== -->
+  <gazebo>
+    <plugin name="skid_steer_drive" filename="libgazebo_ros_skid_steer_drive.so">
+      <commandTopic>cmd_vel</commandTopic>
+      <odometryTopic>odom</odometryTopic>
+      <odometryFrame>odom</odometryFrame>
+      <robotBaseFrame>base_link</robotBaseFrame>
+
+      <leftFrontJoint>left_front_wheel_joint</leftFrontJoint>
+      <leftRearJoint>left_rear_wheel_joint</leftRearJoint>
+      <rightFrontJoint>right_front_wheel_joint</rightFrontJoint>
+      <rightRearJoint>right_rear_wheel_joint</rightRearJoint>
+
+      <wheelSeparation>0.5</wheelSeparation>
+      <wheelDiameter>0.2</wheelDiameter>
+      <wheelTorque>10.0</wheelTorque>
+      <updateRate>50.0</updateRate>
+    </plugin>
+  </gazebo>
+
+</robot>

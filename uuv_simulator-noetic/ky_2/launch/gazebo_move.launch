@@ -1,0 +1,68 @@
+<launch>
+
+    <arg name="paused" default="true"/>
+    <arg name="use_sim_time" default="true"/>
+    <arg name="gui" default="true"/>
+    <arg name="headless" default="false"/>
+    <arg name="debug" default="false"/>
+    <!-- Debug mode will hung up the robot, use "true" or "false" to switch it. -->
+    <arg name="user_debug" default="false"/>
+
+    <!-- 将 Urdf 文件的内容加载到参数服务器 -->
+    <param name="robot_description" command="$(find xacro)/xacro --inorder $(find ky_2)/urdf/ky_2.xacro " />
+ 
+    
+    <!-- 启动 gazebo -->
+    <include file="$(find gazebo_ros)/launch/empty_world.launch">
+        <!-- <arg name="world_name" value="$(find ky_2)/world/ocean_waves_ball.world"/> -->
+        <arg name="debug" value="$(arg debug)"/>
+        <arg name="gui" value="$(arg gui)"/>
+        <arg name="paused" value="$(arg paused)"/>
+        <arg name="use_sim_time" value="$(arg use_sim_time)"/>
+        <arg name="headless" value="$(arg headless)"/>
+    </include>
+ 
+    <!-- 在 gazebo 中显示机器人模型 -->
+    <node pkg="gazebo_ros" type="spawn_model" name="model" args="-urdf -model ky_2 -param robot_description -x 111 -y -37 -z 0.2"/>
+    <!-- 发布机器人状态和TF -->
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher">
+        <param name="publish_frequency" type="double" value="30.0" />
+    </node>
+    <!-- 加载控制器配置文件 -->
+    <rosparam file="$(find ky_2)/config/controllers.yaml" command="load"/>
+
+    <!-- 启动控制器 spawner（一次加载所有控制器） -->
+    <node name="controller_spawner" pkg="controller_manager" type="spawner"
+          args="joint_state_controller robot_state_controller skid_steer_controller jiang1_controller jiang2_controller jiang3_controller jiang4_controller jiang5_controller jiang6_controller" />
+    <!-- 加载控制器配置-->
+    <!-- <rosparam file="$(find ky_2)/config/controllers.yaml" command="load"/> -->
+    <!-- 启动控制器 -->
+    <!-- <node name="controller_manager" pkg="controller_manager" type="spawner" args="joint_state_controller robot_state_controller"/> -->
+
+    <!-- 启动控制器（轮子和螺旋桨） -->
+    <!-- <node name="controller_spawner" pkg="controller_manager" type="spawner" args="skid_steer_controller jiang1_controller jiang2_controller " />  -->
+
+    
+
+
+    
+     <!-- RViz 
+    <arg name="rviz_enable" default="true"/>
+    <node if="$(arg rviz_enable)" pkg="rviz" type="rviz" name="$(anon rviz)" respawn="false" output="screen" args="-d $(find amphibious_car)/rviz/test00.rviz" />
+
+
+    <node pkg="rqt_robot_steering" type="rqt_robot_steering" name="rqt_robot_steering" >
+        <param name="default_topic" value="/cmd_vel"/>                        
+        <param name="default_vx_max" value="1.0"/>                        
+        <param name="default_vx_min" value="-1.0"/>                       
+        <param name="default_vw_max" value="0.5"/>                  
+        <param name="default_vw_min" value="-0.5"/>                  
+    </node>
+
+     启动rosbag记录 
+    <arg name="rosbag_enable" default="true"/>
+    <node if="$(arg rosbag_enable)" pkg="rosbag" type="record" name="rosbag_record" args="-O $(find amphibious_car)/data/my_bag_file.bag /camera_back/image /velodyne_points" />
+-->
+
+
+</launch>
